@@ -4,5 +4,5 @@
   </div>
 </template>
 <script lang="ts" setup>
-const msg = 'Element Button'
+const msg = "Element Button"
 </script>

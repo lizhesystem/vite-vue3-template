@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue"
 
 export default defineComponent({
-  name: 'App'
+  name: "App"
 })
 </script>
 
@@ -19,10 +19,12 @@ export default defineComponent({
   color: #2c3e50;
   margin-top: 60px;
 }
+
 a {
   color: #2c3e50;
   padding: 0 20px;
 }
+
 .links {
   text-align: center;
 }

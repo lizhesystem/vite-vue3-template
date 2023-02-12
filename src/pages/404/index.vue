@@ -4,8 +4,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { onMounted } from "vue"
+import { useRoute } from "vue-router"
 
 onMounted(() => {
   const route = useRoute()

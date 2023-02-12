@@ -6,15 +6,15 @@
   </div>
 </template>
 <script lang="ts">
-import { AxiosInstance } from 'axios'
-import { ElMessage } from 'element-plus'
-import { defineComponent, ref, inject } from 'vue'
-import { publicApi } from '../../apis'
+import { AxiosInstance } from "axios"
+import { ElMessage } from "element-plus"
+import { defineComponent, inject, ref } from "vue"
+import { publicApi } from "../../apis"
 
 export default defineComponent({
   setup() {
-    const phone = ref('12345678901')
-    const $http = inject<AxiosInstance>('$http')
+    const phone = ref("12345678901")
+    const $http = inject<AxiosInstance>("$http")
 
     const getCode = () => {
       publicApi

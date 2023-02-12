@@ -1,6 +1,5 @@
 <template>
   <div>
-    <img alt="Vue logo" src="../../assets/logo.png" />
     <p class="links">
       <router-link to="/home">Home</router-link>
       <router-link to="/about">About</router-link>
@@ -9,23 +8,16 @@
       <router-link :to="`/element`">Element UI Plus</router-link>
     </p>
     <router-view v-slot="{ Component }">
-      <transition name="slide-fade">
+      <transition>
         <component :is="Component" />
       </transition>
     </router-view>
-    <h2>Pinia(Replace Vuex)</h2>
-    <h3>{{ isEven ? 'Even' : 'Odd' }}</h3>
-    <h3>{{ count }}</h3>
-    <div>
-      <button @click="add">Sync Add</button>
-      <button @click="asyncAdd">Async Add</button>
-    </div>
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useCountStore } from '@/store'
+import { computed } from "vue"
+import { storeToRefs } from "pinia"
+import { useCountStore } from "@/store"
 
 const id = computed(() => ~~(Math.random() * 1000))
 

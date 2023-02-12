@@ -8,7 +8,7 @@
     <a
       href="https://marketplace.visualstudio.com/items?itemName=octref.vetur"
       target="_blank"
-      >Vetur</a
+    >Vetur</a
     >
     or
     <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
@@ -20,7 +20,7 @@
 
   <p>
     <a href="https://vitejs.dev/guide/features.html" target="_blank"
-      >Vite Docs</a
+    >Vite Docs</a
     >
     |
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
@@ -34,11 +34,11 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { defineComponent, onMounted, ref } from "vue"
+import { useRoute } from "vue-router"
 
 export default defineComponent({
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
     msg: {
       type: String,

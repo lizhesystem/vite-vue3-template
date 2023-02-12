@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia"
 
-const useStore = defineStore('storeId', {
+const useStore = defineStore("storeId", {
   // arrow function recommended for full type inference
   state: () => ({
     // all these properties will have their type inferred automatically

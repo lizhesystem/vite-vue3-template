@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios"
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_AXIOS_BASE_URL
@@ -11,15 +11,15 @@ instance.interceptors.request.use((config) => {
   const { method, params } = config
   // 附带鉴权的token
   const headers: any = {
-    token: localStorage.getItem('token')
+    token: localStorage.getItem("token")
   }
   // 不缓存get请求
-  if (method === 'get') {
-    headers['Cache-Control'] = 'no-cache'
+  if (method === "get") {
+    headers["Cache-Control"] = "no-cache"
   }
   // delete请求参数放入body中
-  if (method === 'delete') {
-    headers['Content-type'] = 'application/json;'
+  if (method === "delete") {
+    headers["Content-type"] = "application/json;"
     Object.assign(config, {
       data: params,
       params: {}
@@ -37,7 +37,7 @@ instance.interceptors.request.use((config) => {
  */
 instance.interceptors.response.use((v) => {
   if (v.data?.code === 401) {
-    localStorage.removeItem('token')
+    localStorage.removeItem("token")
     // alert('即将跳转登录页。。。', '登录过期')
     // setTimeout(redirectHome, 1500)
     return v.data

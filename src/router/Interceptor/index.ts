@@ -1,6 +1,6 @@
-import { Router } from 'vue-router'
+import { Router } from "vue-router"
 
-declare module 'vue-router' {
+declare module "vue-router" {
   interface RouteMeta {
     // 是可选的
     isAdmin?: boolean
@@ -15,7 +15,7 @@ function registerRouteGuard(router: Router) {
    */
   router.beforeEach((to, from) => {
     if (to.meta.requireLogin) {
-      if (from.path === '/') {
+      if (from.path === "/") {
         return from
       }
       return false

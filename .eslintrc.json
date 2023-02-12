@@ -12,47 +12,47 @@
     "ecmaFeatures": {
       "jsx": true
     }
-  },
-  "extends": [
-    "airbnb-base",
-    "eslint:recommended",
-    "plugin:vue/vue3-essential",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": [
-    "vue",
-    "@typescript-eslint",
-    "todo-ddl",
-    "prettier"
-  ],
-  "rules": {
-    "prettier/prettier": "warn",
-    "@typescript-eslint/ban-types": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "import/extensions": "off",
-    "quotes": [
-      "warn",
-      "single"
-    ],
-    "semi": [
-      "warn",
-      "never"
-    ],
-    "import/no-unresolved": "off",
-    "todo-ddl/diy": "warn",
-    "import/prefer-default-export": "off",
-    "no-param-reassign": "warn",
-    "import/no-extraneous-dependencies": "off",
-    "max-len": "warn",
-    "no-restricted-syntax": "off",
-    "no-bitwise": "off",
-    "camelcase": "off",
-    "no-case-declarations": "off",
-    "@typescript-eslint/no-namespace": "off",
-    "no-undef": "off",
-    "no-promise-executor-return": "off",
-    "vue/multi-word-component-names": "off"
   }
+//  "extends": [
+//    "airbnb-base",
+//    "eslint:recommended",
+//    "plugin:vue/vue3-essential",
+//    "plugin:@typescript-eslint/recommended",
+//    "plugin:prettier/recommended"
+//  ],
+//  "plugins": [
+//    "vue",
+//    "@typescript-eslint",
+//    "todo-ddl",
+//    "prettier"
+//  ],
+//  "rules": {
+//    "prettier/prettier": "off",
+//    "@typescript-eslint/ban-types": "off",
+//    "@typescript-eslint/no-explicit-any": "off",
+//    "@typescript-eslint/explicit-module-boundary-types": "off",
+//    "import/extensions": "off",
+//    "quotes": [
+//      "off",
+//      "single"
+//    ],
+//    "semi": [
+//      "warn",
+//      "never"
+//    ],
+//    "import/no-unresolved": "off",
+//    "todo-ddl/diy": "warn",
+//    "import/prefer-default-export": "off",
+//    "no-param-reassign": "warn",
+//    "import/no-extraneous-dependencies": "off",
+//    "max-len": "warn",
+//    "no-restricted-syntax": "off",
+//    "no-bitwise": "off",
+//    "camelcase": "off",
+//    "no-case-declarations": "off",
+//    "@typescript-eslint/no-namespace": "off",
+//    "no-undef": "off",
+//    "no-promise-executor-return": "off",
+//    "vue/multi-word-component-names": "off"
+//  }
 }

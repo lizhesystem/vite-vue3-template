@@ -1,11 +1,11 @@
-import ajax from '../ajax'
+import ajax from "../ajax"
 
 /**
  * 获取验证码 - 有固定返回值格式
  * @param mobile 手机号
  */
 function getCode(phone: string): ResponseData<{ num: number }> {
-  return ajax.get('random/code', {
+  return ajax.get("random/code", {
     params: {
       phone
     }
@@ -17,7 +17,7 @@ function getCode(phone: string): ResponseData<{ num: number }> {
  * @param mobile 手机号
  */
 function getCode2(phone: string): Promise<{ num: number }> {
-  return ajax.get('random/code', {
+  return ajax.get("random/code", {
     params: {
       phone
     }
