@@ -19,5 +19,5 @@ export const getSidebarStatus = (): boolean => WebStorage.getItem(CacheKey.SIDEB
 /*                               Project Config                               */
 /* -------------------------------------------------------------------------- */
 export const setProjectConfig = (config: Omit<ProjectConfig, 'showSetting'>) => WebStorage.setItem(CacheKey.PROJECT_CONFIG, config)
-export const getProjectConfig = (): ProjectConfig => WebStorage.getItem(CacheKey.PROJECT_CONFIG) || ({} as ProjectConfig)
+export const getProjectConfig = (): ProjectConfig => WebStorage.getItem(CacheKey.PROJECT_CONFIG) || ({} as ProjectConfig) // 类型断言 as
 export const removeProjectConfig = () => WebStorage.removeItem(CacheKey.PROJECT_CONFIG)

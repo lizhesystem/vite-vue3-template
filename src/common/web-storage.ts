@@ -3,6 +3,7 @@ interface WebStorageConfig {
   expired: number
 }
 
+// Partial定义某个对象的部分属性可能为空的情况，让这些属性变为可选，从而增加灵活性。
 export class WebStorage {
   static getItem<T extends any>(key: string, config: Partial<WebStorageConfig> = {}): T | null {
     const storage = config.storage ?? window.localStorage
