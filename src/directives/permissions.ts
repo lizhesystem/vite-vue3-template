@@ -5,9 +5,12 @@ export const permissions: Directive = {
     const bindPermissions: string[] = binding.value
     if (Array.isArray(bindPermissions) && bindPermissions.length) {
       const userStore = useUser()
-      const hasPermission = userStore.permissions.some((permission) => bindPermissions.includes(permission))
-      if (!hasPermission) el.remove()
-    } else {
+      const hasPermission = userStore.permissions.some(permission => bindPermissions.includes(permission))
+      if (!hasPermission) {
+        el.remove()
+      }
+    }
+    else {
       throw new Error(`v-permissions 权限校验指令编码组缺失，请参考 v-permissions="['*:*:*']" 使用`)
     }
   },

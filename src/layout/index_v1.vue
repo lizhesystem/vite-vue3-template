@@ -1,9 +1,3 @@
-<template>
-  <div class="app-container relative wh-full" :class="classes">
-    <RouterView />
-  </div>
-</template>
-
 <script setup lang="ts">
 defineOptions({ name: 'Layout' })
 
@@ -19,6 +13,12 @@ const classes = computed(() => {
   return cls
 })
 </script>
+
+<template>
+  <div class="app-container relative wh-full" :class="classes">
+    <RouterView />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .app-container {

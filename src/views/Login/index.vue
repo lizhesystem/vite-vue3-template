@@ -1,27 +1,3 @@
-<template>
-  <div class="login-container relative wh-screen overflow-hidden">
-    <div class="login-content fixed overflow-hidden flex">
-      <div class="left">
-        <img src="../../assets/images/223502-17123277028d9c.jpg" class="wh-full" alt="" />
-      </div>
-      <div class="right">
-        <h3>登录</h3>
-        <input type="text" v-model="loginForm.account" class="input-item" placeholder="请输入你的账号" />
-        <input type="password" v-model="loginForm.password" class="input-item" placeholder="请输入你的密码" />
-        <a href="#" class="forget-password">忘记密码？</a>
-        <button class="btn" @click="handleLogin">
-          <span v-if="loading">正在登录...</span>
-          <span v-else>提交</span>
-        </button>
-      </div>
-    </div>
-
-    <footer class="login-footer-container">
-      <span>少时，春风得意马蹄疾，不信人间有别离。</span>
-    </footer>
-  </div>
-</template>
-
 <script setup lang="ts">
 defineOptions({ name: 'Login' })
 
@@ -47,12 +23,37 @@ async function handleLogin() {
     loading.value = false
     console.log('redirect: ', redirect)
     await router.replace({ path: redirect })
-  } catch (error) {
+  }
+  catch (error) {
     console.log('error: ', error)
     loading.value = false
   }
 }
 </script>
+
+<template>
+  <div class="login-container relative wh-screen overflow-hidden">
+    <div class="login-content fixed overflow-hidden flex">
+      <div class="left">
+        <img src="../../assets/images/223502-17123277028d9c.jpg" class="wh-full" alt="">
+      </div>
+      <div class="right">
+        <h3>登录</h3>
+        <input v-model="loginForm.account" type="text" class="input-item" placeholder="请输入你的账号">
+        <input v-model="loginForm.password" type="password" class="input-item" placeholder="请输入你的密码">
+        <a href="#" class="forget-password">忘记密码？</a>
+        <button class="btn" @click="handleLogin">
+          <span v-if="loading">正在登录...</span>
+          <span v-else>提交</span>
+        </button>
+      </div>
+    </div>
+
+    <footer class="login-footer-container">
+      <span>少时，春风得意马蹄疾，不信人间有别离。</span>
+    </footer>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .login-container {

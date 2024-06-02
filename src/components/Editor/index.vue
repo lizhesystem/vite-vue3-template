@@ -1,16 +1,11 @@
-<template>
-  <div class="editor-container">
-    <Toolbar class="toolbar" :editor="editorRef" :defaultConfig="toolbarConfig" :mode />
-    <Editor v-model="modelValue" :style="styles" :defaultConfig="editorConfig" :mode @onCreated="handleCreated" @customPaste="handleCustomPaste" />
-  </div>
-</template>
-
 <script setup lang="ts">
-defineOptions({ name: 'Editor' })
-import { onBeforeUnmount, ref, shallowRef, CSSProperties } from 'vue'
+import type { CSSProperties } from 'vue'
+import { onBeforeUnmount, ref, shallowRef } from 'vue'
 import '@wangeditor/editor/dist/css/style.css'
-import { Editor, Toolbar, type InsertFnType } from '@wangeditor/editor-for-vue'
-import type { IEditorConfig, IDomEditor, IToolbarConfig } from '@wangeditor/editor'
+import { Editor, type InsertFnType, Toolbar } from '@wangeditor/editor-for-vue'
+import type { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor'
+
+defineOptions({ name: 'Editor' })
 
 /** 接收父组件传递的属性 */
 const props = defineProps({
@@ -72,9 +67,20 @@ const handleCreated = (editor: IDomEditor) => (editorRef.value = editor)
 onBeforeUnmount(() => editorRef.value && editorRef.value.destroy())
 </script>
 
+<template>
+  <div class="editor-container">
+    <Toolbar class="toolbar" :editor="editorRef" :default-config="toolbarConfig" :mode />
+    <Editor
+      v-model="modelValue" :style="styles" :default-config="editorConfig" :mode @on-created="handleCreated"
+      @custom-paste="handleCustomPaste"
+    />
+  </div>
+</template>
+
 <style lang="scss" scoped>
 .editor-container {
   border: 1px solid #dcdfe6;
+
   .toolbar {
     border-bottom: 1px solid #dcdfe6;
   }
@@ -84,31 +90,39 @@ onBeforeUnmount(() => editorRef.value && editorRef.value.destroy())
   em {
     font-style: italic;
   }
+
   strong {
     font-weight: bold;
   }
+
   em strong {
     font-style: italic;
   }
+
   h1 {
     font-size: 2em;
     font-weight: bold;
   }
+
   h2 {
     font-size: 1.5em;
     font-weight: bold;
   }
+
   h3 {
     font-size: 1.17em;
     font-weight: bold;
   }
+
   h4 {
     font-weight: bold;
   }
+
   h5 {
     font-size: 0.83em;
     font-weight: bold;
   }
+
   h6 {
     font-size: 0.67em;
     font-weight: bold;

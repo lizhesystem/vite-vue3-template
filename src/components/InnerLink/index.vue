@@ -1,13 +1,8 @@
-<template>
-  <div class="iframe-container">
-    <iframe v-bind="$attrs" :src frameborder="no" scrolling="auto" class="block wh-full"></iframe>
-  </div>
-</template>
-
 <script setup lang="ts">
 /** 禁止组件的根元素继承特性 inheritAttrs: false */
-defineOptions({ name: 'InnerLink', inheritAttrs: false })
 import { isString } from 'lodash-es'
+
+defineOptions({ name: 'InnerLink', inheritAttrs: false })
 
 /** 接收父组件传递的属性 */
 const props = defineProps({
@@ -24,6 +19,12 @@ const props = defineProps({
 const iframeContainerWidth = computed(() => (isString(props.width) ? props.width : `${props.width}px`))
 const iframeContainerHeight = computed(() => (isString(props.height) ? props.height : `${props.height}px`))
 </script>
+
+<template>
+  <div class="iframe-container">
+    <iframe v-bind="$attrs" :src frameborder="no" scrolling="auto" class="block wh-full" />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .iframe-container {

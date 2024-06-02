@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from 'vite' // 使用 defineConfig 工具函数，这样不用 jsdoc 注解也可以获取类型提示
-import { warpperEnv, pathResolve } from './build' // 引入对环境变量的处理函数
+import { pathResolve, warpperEnv } from './build' // 引入对环境变量的处理函数
 import { generateVitePlugins } from './build/plugins' // 引入抽离出去的 vite 插件集合
 
 /** 当前执行 node 命令时文件夹的地址（工作目录） 即项目根目录（也就是 index.html 文件所在的位置） */
@@ -78,17 +78,17 @@ export default defineConfig(({ command, mode }) => {
             }
             // 字体文件
             const fontExtList = ['.ttf', '.otf', '.woff', '.woff2', '.eot']
-            if (fontExtList.some((ext) => chunkInfo.name.endsWith(ext))) {
+            if (fontExtList.some(ext => chunkInfo.name.endsWith(ext))) {
               return 'font/[name]-[hash].[ext]'
             }
             // 图片文件
             const imgExtList = ['png', 'jpg', '.jpeg', 'gif', 'webp']
-            if (imgExtList.some((ext) => chunkInfo.name.endsWith(ext))) {
+            if (imgExtList.some(ext => chunkInfo.name.endsWith(ext))) {
               return `img/[name]-[hash].[ext]`
             }
             // 视频文件
             const videoExtList = ['.mp4', '.avi', '.wmv', '.ram', '.mpg', 'mpeg', '.m3u8']
-            if (videoExtList.some((ext) => chunkInfo.name.endsWith(ext))) {
+            if (videoExtList.some(ext => chunkInfo.name.endsWith(ext))) {
               return `video/[name]-[hash].[ext]`
             }
             // 其它文件: 保存在 assets/文件名-哈希值.扩展名
@@ -100,7 +100,7 @@ export default defineConfig(({ command, mode }) => {
             // 因为 node_modules 中的依赖通常是不会改变的 所以直接单独打包出去
             // 这个 return 的值就是打包的名称
             // 可以利用浏览器的缓存机制 减少请求次数
-            if (chunk.includes('node_modules')) return 'vendor'
+            if (chunk.includes('node_modules')) { return 'vendor' }
           },
         },
       },

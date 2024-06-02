@@ -1,6 +1,6 @@
 /** 取得 [n, m] 范围内随机整数 */
 export function randomFullClose(min: number, max: number): number {
-  if (min > max) throw new Error(`min must be less than max!`)
+  if (min > max) { throw new Error(`min must be less than max!`) }
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
@@ -36,7 +36,7 @@ export function humpToUnderline(str: string): string {
 
 /** 下划线字符串转驼峰字符串  */
 export function underlineToHump(str: string): string {
-  return str.replace(/\_(\w)/g, (_, letter: string) => letter.toUpperCase())
+  return str.replace(/_(\w)/g, (_, letter: string) => letter.toUpperCase())
 }
 
 /** 驼峰字符串转中划线字符串 */
@@ -46,7 +46,7 @@ export function humpToDash(str: string): string {
 
 /** 中划线字符串转驼峰字符串 */
 export function dashToHump(str: string): string {
-  return str.replace(/\-(\w)/g, (_, letter: string) => letter.toUpperCase())
+  return str.replace(/-(\w)/g, (_, letter: string) => letter.toUpperCase())
 }
 
 /** 通过名称获取 URL 查询参数 */
@@ -58,12 +58,12 @@ export function getQueryByName(name: string): string {
 
 /** 查询字符串转对象 */
 export function getQueryObject(url?: string): Record<string, string> {
-  url = url ? url : window.location.href
+  url = url || window.location.href
   const search = url.substring(url.lastIndexOf('?') + 1)
   const query: Record<string, string> = {}
   const list = search.split('&')
   for (const item of list) {
-    if (!item.includes('=')) continue
+    if (!item.includes('=')) { continue }
     const [key, value] = item.split('=')
     query[key] = value
   }

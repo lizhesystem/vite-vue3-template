@@ -1,7 +1,7 @@
 /**
  * 利用 a 标签进行下载
- * @param {String} fileURL
- * @param {String} fileName
+ * @param {string} fileURL
+ * @param {string} fileName
  */
 export function linkDownload(fileURL: string, fileName?: string): void {
   const a = document.createElement('a')
@@ -17,8 +17,8 @@ export function linkDownload(fileURL: string, fileName?: string): void {
 
 /**
  * ArrayBuffer 转 Blob
- * @param {Buffer} buffer 待转换的 ArrayBuffer 数据
- * @param {String} blobType 目标 Blob 的数据 MIME 类型
+ * @param {buffer} buffer 待转换的 ArrayBuffer 数据
+ * @param {string} blobType 目标 Blob 的数据 MIME 类型
  * @returns {Blob} 转换后的 Blob 数据
  */
 export function arrayBufferToBlob(buffer: ArrayBuffer, blobType = 'application/actet-stream'): Blob {
@@ -28,10 +28,9 @@ export function arrayBufferToBlob(buffer: ArrayBuffer, blobType = 'application/a
 
 /**
  * 图片转为 Base64 字符串
- * @param {String} imgURL 待转换的图片路径
- * @param {String} type 转换后的图片类型
- * @param  {Number} quality 转换后的图片质量
- * @returns {String} Base64 字符串
+ * @param {string} imgURL 待转换的图片路径
+ * @param  {number} quality 转换后的图片质量
+ * @returns {string} Base64 字符串
  */
 export function imageToBase64(imgURL: string, quality = 0.9): Promise<string> {
   const img = new Image()
@@ -54,12 +53,13 @@ export function imageToBase64(imgURL: string, quality = 0.9): Promise<string> {
 
 /** 复制文本到剪贴板 */
 export function copyText(text: string): void {
-  if (typeof text !== 'string') throw new Error(`the content must be of type string`)
+  if (typeof text !== 'string') { throw new TypeError(`the content must be of type string`) }
   // 是否支持 navigator.clipboard 属性
   const isClipboardApiSupported = window.navigator && window.navigator.clipboard
   if (isClipboardApiSupported) {
     window.navigator.clipboard.writeText(text)
-  } else {
+  }
+  else {
     const textarea = document.createElement('textarea')
     textarea.readOnly = true
     textarea.value = text

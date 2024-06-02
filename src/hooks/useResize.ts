@@ -20,8 +20,11 @@ export default () => {
 
       if (isMobile) {
         appStore.closeSidebar(true)
-      } else {
-        if (!appStore.sidebar.opened) appStore.toggleSidebar()
+      }
+      else {
+        if (!appStore.sidebar.opened) {
+          appStore.toggleSidebar()
+        }
       }
     }
   }

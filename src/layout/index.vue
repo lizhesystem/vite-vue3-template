@@ -1,37 +1,5 @@
-<template>
-  <div class="app-container" :class="classes">
-    <aside class="sidebar-container">
-      <div class="menu-item" v-for="(item, i) in viewList" :key="i" :class="{ 'is-active': activeComponent?.name === item.component.name }" @click="switchView(item.component)">
-        {{ item.title }}
-      </div>
-
-      <footer>
-        <button class="btn" type="button" @click="logout">
-          <strong>退出登录</strong>
-          <div id="container-stars">
-            <div id="stars"></div>
-          </div>
-          <div id="glow">
-            <div class="circle"></div>
-            <div class="circle"></div>
-          </div>
-        </button>
-      </footer>
-    </aside>
-
-    <section class="main-container">
-      <div class="app-main">
-        <!-- key 采用 route.path 和 route.fullPath 有着不同的效果，大多数时候 path 更通用 -->
-        <Transition :name="settingStore.transitionName" mode="out-in">
-          <component :is="activeComponent" :key="route.path"></component>
-        </Transition>
-      </div>
-    </section>
-  </div>
-</template>
-
 <script setup lang="ts">
-defineOptions({ name: 'Layout' })
+import Demo from '@/views/Demo/index.vue'
 import RichText from '@/views/Example/RichText/index.vue'
 import QrCodeDemo from '@/views/Example/QrCodeDemo/index.vue'
 import iFrameDemo from '@/views/Example/iFrameDemo/index.vue'
@@ -40,6 +8,8 @@ import StarfishDesign from '@/views/Example/iFrameDemo/StarfishDesign.vue'
 import FormGenerator from '@/views/Example/iFrameDemo/FormGenerator.vue'
 import SwitchDemo from '@/views/Example/SwitchDemo/index.vue'
 import NotFound from '@/views/ExceptionPage/NotFound.vue'
+
+defineOptions({ name: 'Layout' })
 
 /** Layout 布局响应式 */
 useResize()
@@ -66,16 +36,53 @@ const viewList = [
   { title: '链接内嵌示例', component: iFrameDemo },
   { title: 'Starfish表单设计', component: StarfishDesign },
   { title: 'FormGenerator表单设计', component: FormGenerator },
+  { title: 'Demo', component: Demo },
 ]
 
 function switchView(component: Component) {
   activeComponent.value = component
 }
+
 function logout() {
   userStore.logout()
   window.location.href = '/'
 }
 </script>
+
+<template>
+  <div class="app-container" :class="classes">
+    <aside class="sidebar-container">
+      <div
+        v-for="(item, i) in viewList" :key="i" class="menu-item"
+        :class="{ 'is-active': activeComponent?.name === item.component.name }" @click="switchView(item.component)"
+      >
+        {{ item.title }}
+      </div>
+
+      <footer>
+        <button class="btn" type="button" @click="logout">
+          <strong>退出登录</strong>
+          <div id="container-stars">
+            <div id="stars" />
+          </div>
+          <div id="glow">
+            <div class="circle" />
+            <div class="circle" />
+          </div>
+        </button>
+      </footer>
+    </aside>
+
+    <section class="main-container">
+      <div class="app-main">
+        <!-- key 采用 route.path 和 route.fullPath 有着不同的效果，大多数时候 path 更通用 -->
+        <Transition :name="settingStore.transitionName" mode="out-in">
+          <component :is="activeComponent" :key="route.path" />
+        </Transition>
+      </div>
+    </section>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .app-container {
@@ -121,10 +128,12 @@ function logout() {
   white-space: nowrap;
   transition: all 0.32s;
   cursor: pointer;
+
   &.is-active {
     color: #2b65d9;
     background-color: #fff;
   }
+
   &:first-of-type {
     margin-top: 16px;
   }
@@ -147,6 +156,7 @@ function logout() {
   .sidebar-container {
     width: 0;
   }
+
   .main-container {
     margin-left: 0;
   }

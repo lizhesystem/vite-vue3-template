@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import type { PluginOption } from 'vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
 
-export const registerHtmlPlugin = (viteEnv: ViteEnv, isBuild: boolean): PluginOption => {
+export function registerHtmlPlugin(viteEnv: ViteEnv, isBuild: boolean): PluginOption {
   const { VITE_APP_TITLE } = viteEnv
 
   return createHtmlPlugin({

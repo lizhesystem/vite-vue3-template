@@ -1,13 +1,8 @@
-<template>
-  <svg class="svg-icon" aria-hidden :style="styles">
-    <use :href="`#icon-${name}`" :fill="color"></use>
-  </svg>
-</template>
-
 <script setup lang="ts">
-defineOptions({ name: 'SvgIcon' })
 import { isString } from 'lodash-es'
-import { type CSSProperties } from 'vue'
+import type { CSSProperties } from 'vue'
+
+defineOptions({ name: 'SvgIcon' })
 
 const props = defineProps({
   name: { type: String as PropType<SvgIconName>, required: true },
@@ -23,6 +18,12 @@ const styles = computed<CSSProperties>(() => ({
   height: isString(props.size) ? props.size : `${props.size}px`,
 }))
 </script>
+
+<template>
+  <svg class="svg-icon" aria-hidden :style="styles">
+    <use :href="`#icon-${name}`" :fill="color" />
+  </svg>
+</template>
 
 <style scoped>
 .svg-icon {

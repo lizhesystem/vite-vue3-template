@@ -1,4 +1,4 @@
-import type { RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
+import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 import { getAccessToken } from '@/utils/cache/local-storage' // 从缓存读取 Token 的方法
 import isWhiteList from '@/config/white-list' // 路由是否在白名单的判断判断方法
 
@@ -15,10 +15,10 @@ export async function globalRouterBeforeGuard(to: RouteLocationNormalized, from:
   console.log('hasToken: ', hasToken)
 
   /** 如果没有 Token，但在免登录的白名单中，则直接进入；否则将被重定向到登录页面 */
-  if (!hasToken) return isWhiteList(to) ? next() : next(`/login?redirect=${to.fullPath}`)
+  if (!hasToken) { return isWhiteList(to) ? next() : next(`/login?redirect=${to.fullPath}`) }
 
   /** 如果已经登录，并准备进入 Login 页面，则重定向到主页 */
-  if (to.path.toLowerCase() === '/login') return next({ path: '/', replace: true })
+  if (to.path.toLowerCase() === '/login') { return next({ path: '/', replace: true }) }
 
   /** 其余情况暂时放行 */
   next()

@@ -1,16 +1,3 @@
-<template>
-  <div class="app-content">
-    <div class="tips bg-amber p-10px b-rd-8px">图片与视频暂未联动服务器，不过预留了自定义上传的方法，具体参考 README.md 文件</div>
-
-    <Editor v-model="content" class="mt-16px mb-16px" mode="default" />
-
-    <button @click="getData">获取数据</button>
-    <!-- <main class="bg-slate c-white p-10px b-rd-10px">
-      <div v-dompurify-html="content"></div>
-    </main> -->
-  </div>
-</template>
-
 <script setup lang="ts">
 defineOptions({ name: 'RichText' })
 
@@ -20,6 +7,23 @@ function getData() {
   console.log(content.value)
 }
 </script>
+
+<template>
+  <div class="app-content">
+    <div class="tips bg-amber p-10px b-rd-8px">
+      图片与视频暂未联动服务器，不过预留了自定义上传的方法，具体参考 README.md 文件
+    </div>
+
+    <Editor v-model="content" class="mt-16px mb-16px" mode="default" />
+
+    <button @click="getData">
+      获取数据
+    </button>
+    <!-- <main class="bg-slate c-white p-10px b-rd-10px">
+      <div v-dompurify-html="content"></div>
+    </main> -->
+  </div>
+</template>
 
 <style lang="scss" scoped>
 button {

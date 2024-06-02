@@ -1,11 +1,8 @@
-<template>
-  <VueQr class="qrcode" ref="vueQrInstance" v-bind="$attrs" :text :size :margin :logoSrc="icon" :colorDark="color" :backgroundColor="bgColor" />
-</template>
-
 <script setup lang="ts">
-defineOptions({ name: 'QRCode' })
 import VueQr from 'vue-qr/src/packages/vue-qr.vue'
 import { linkDownload } from '@/utils/download'
+
+defineOptions({ name: 'QRCode' })
 
 defineProps({
   /** 二维码内容 必需 */
@@ -37,6 +34,10 @@ function download(fileName?: string) {
 
 defineExpose({ toDataURL, download })
 </script>
+
+<template>
+  <VueQr ref="vueQrInstance" class="qrcode" v-bind="$attrs" :text :size :margin :logo-src="icon" :color-dark="color" :background-color="bgColor" />
+</template>
 
 <style lang="scss" scoped>
 .qrcode:hover {

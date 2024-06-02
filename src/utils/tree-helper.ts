@@ -33,7 +33,7 @@ export function transformTreeToList<T = any>(tree: any, config: Partial<TreeHelp
   const { children } = getConfig(config) as TreeHelperConfig
   const list = [...tree]
   for (let i = 0; i < list.length; i++) {
-    if (!list[i][children]) continue
+    if (!list[i][children]) { continue }
     list.splice(i + 1, 0, ...list[i][children])
     delete list[i][children]
   }

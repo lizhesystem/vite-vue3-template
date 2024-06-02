@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { AuthEnum, RequestMethodEnum } from '@/enums'
 import { handleErrorCode } from './status-code'
+import { AuthEnum, RequestMethodEnum } from '@/enums'
 import { getAccessToken } from '@/utils/cache/local-storage'
 
 const { VITE_BASE_API, VITE_REQUEST_TIMEOUT, VITE_REQUEST_NPROGRESS } = useEnv() // 解构环境变量
@@ -34,13 +34,13 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   (response) => {
     NProgress.done() // 关闭响应进度条
-    if (['blob', 'arraybuffer'].includes(response.request.responseType)) return response.data // 二进制数据则直接返回
+    if (['blob', 'arraybuffer'].includes(response.request.responseType)) { return response.data } // 二进制数据则直接返回
     return response.data
   },
   (error: any) => {
     console.log('响应拦截器异常: ', error) // for debug
     let message = error.message
-    if (error.response) message = handleErrorCode(error.response.status)
+    if (error.response) { message = handleErrorCode(error.response.status) }
     NProgress.done() // 关闭响应进度条
     return Promise.reject(error)
   },

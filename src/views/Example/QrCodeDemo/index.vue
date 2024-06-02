@@ -1,27 +1,7 @@
-<template>
-  <div class="app-content flex-center p-10vh">
-    <form class=" ">
-      <div class="form-item" v-if="qrcodeText">
-        <button @click.prevent="downloadQRCode">下载二维码</button>
-      </div>
-      <div class="form-item">
-        <span class="form-item__label">文本内容</span>
-        <input type="text" placeholder="请输入二维码内容文本" v-model="qrcodeText" />
-      </div>
-      <div class="form-item">
-        <span class="form-item__label">中心图标</span>
-        <input type="file" @change="handleFileChange" />
-      </div>
-      <div class="form-item">
-        <QRCode :text="qrcodeText" v-if="qrcodeText" ref="qrcodeRef" :icon="qrcodeIcon" />
-      </div>
-    </form>
-  </div>
-</template>
-
 <script setup lang="ts">
-defineOptions({ name: 'QrCodeDemo' })
 import type { QRCodeInstance } from '@/components'
+
+defineOptions({ name: 'QrCodeDemo' })
 
 const qrcodeText = ref<string>('https://github.com/Ace627/vite-vue3-template')
 const qrcodeIcon = ref<string>()
@@ -41,6 +21,29 @@ onUnmounted(() => {
   qrcodeIcon.value && URL.revokeObjectURL(qrcodeIcon.value)
 })
 </script>
+
+<template>
+  <div class="app-content flex-center p-10vh">
+    <form class=" ">
+      <div v-if="qrcodeText" class="form-item">
+        <button @click.prevent="downloadQRCode">
+          下载二维码
+        </button>
+      </div>
+      <div class="form-item">
+        <span class="form-item__label">文本内容</span>
+        <input v-model="qrcodeText" type="text" placeholder="请输入二维码内容文本">
+      </div>
+      <div class="form-item">
+        <span class="form-item__label">中心图标</span>
+        <input type="file" @change="handleFileChange">
+      </div>
+      <div class="form-item">
+        <QRCode v-if="qrcodeText" ref="qrcodeRef" :text="qrcodeText" :icon="qrcodeIcon" />
+      </div>
+    </form>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 button {

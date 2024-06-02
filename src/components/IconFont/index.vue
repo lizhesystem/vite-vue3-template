@@ -1,10 +1,7 @@
-<template>
-  <i :class="classes" :style="styles" v-bind="$attrs"></i>
-</template>
-
 <script setup lang="ts">
-defineOptions({ name: 'IconFont' })
 import type { CSSProperties } from 'vue'
+
+defineOptions({ name: 'IconFont' })
 
 const props = defineProps({
   /** 图标名字 */
@@ -27,5 +24,9 @@ const classes = computed(() => {
   return `iconfont icon-${props.name} cursor-pointer`
 })
 </script>
+
+<template>
+  <i :class="classes" :style="styles" v-bind="$attrs" />
+</template>
 
 <style lang="scss" scoped></style>

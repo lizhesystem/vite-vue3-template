@@ -8,9 +8,10 @@ export const roles: Directive = {
     const bindRoles: string[] = binding.value
     if (Array.isArray(bindRoles) && bindRoles.length) {
       const userStore = useUser()
-      const hasRole = userStore.roles.some((role) => bindRoles.includes(role))
-      if (!hasRole && !userStore.roles.includes('admin')) el.remove()
-    } else {
+      const hasRole = userStore.roles.some(role => bindRoles.includes(role))
+      if (!hasRole && !userStore.roles.includes('admin')) { el.remove() }
+    }
+    else {
       throw new Error(`v-roles 角色校验指令编码组缺失，请参考 v-roles="['editor']" 使用`)
     }
   },

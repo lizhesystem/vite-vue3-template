@@ -7,7 +7,7 @@ export class WebStorage {
   static getItem<T extends any>(key: string, config: Partial<WebStorageConfig> = {}): T | null {
     const storage = config.storage ?? window.localStorage
     const json = storage.getItem(key)
-    if (!json) return null
+    if (!json) { return null }
     const { value, expired } = JSON.parse(json)
     if (expired && Date.now() >= expired) {
       storage.removeItem(key)

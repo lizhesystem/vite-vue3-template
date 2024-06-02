@@ -12,7 +12,7 @@ export function isVersion(version: string): boolean {
 
 /** 判断是否为 Email（支持中文邮箱） */
 export function isEmail(email: string): boolean {
-  const reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+  const reg = /^[A-Z0-9\u4E00-\u9FA5]+@[\w-]+(\.[\w-]+)+$/i
   return reg.test(email)
 }
 
@@ -24,7 +24,7 @@ export function isQQ(qq: string): boolean {
 
 /** 校验是否为十六进制颜色值 */
 export function isHexColor(color: string): boolean {
-  const reg = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/
+  const reg = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i
   return reg.test(color)
 }
 
@@ -58,7 +58,7 @@ export function isExternal(path: string): boolean {
 
 /** 判断是否为网址（带协议） */
 export function isUrl(url: string): boolean {
-  const reg = /^(((ht|f)tps?):\/\/)?([^!@#$%^&*?.\s-]([^!@#$%^&*?.\s]{0,63}[^!@#$%^&*?.\s])?\.)+[a-z]{2,6}\/?/
+  const reg = /^(((ht|f)tps?):\/\/)?([^!@#$%^&*?.\s-]([^!@#$%^&*?.\s]{1,64})?\.)+[a-z]{2,6}\/?/
   return reg.test(url)
 }
 
@@ -70,7 +70,7 @@ export function isUrlPort(url: string): boolean {
 
 /** 判断是否为域名（不带协议） */
 export function isDomain(domain: string): boolean {
-  const reg = /^([0-9a-zA-Z-]{1,}\.)+([a-zA-Z]{2,})$/
+  const reg = /^([0-9a-z-]+\.)+([a-z]{2,})$/i
   return reg.test(domain)
 }
 
@@ -82,7 +82,7 @@ export function isIPv4(ip: string): boolean {
 
 /** 判断是否为 MAC 地址 */
 export function isMac(mac: string): boolean {
-  const reg = /^(([a-f0-9][0,2,4,6,8,a,c,e]:([a-f0-9]{2}:){4})|([a-f0-9][0,2,4,6,8,a,c,e]-([a-f0-9]{2}-){4}))[a-f0-9]{2}$/i
+  const reg = /^(([a-f0-9][0,2468ace]:([a-f0-9]{2}:){4})|([a-f0-9][0,2468ace]-([a-f0-9]{2}-){4}))[a-f0-9]{2}$/i
   return reg.test(mac)
 }
 
@@ -94,6 +94,6 @@ export function isLicensePlate(plate: string): boolean {
 
 /** 判断是否为第二代身份证（18 位） */
 export function isChineseIdCard(content: string): boolean {
-  const reg = /^[1-9]\d{5}(?:18|19|20)\d{2}(?:0[1-9]|10|11|12)(?:0[1-9]|[1-2]\d|30|31)\d{3}[\dXx]$/
+  const reg = /^[1-9]\d{5}(?:18|19|20)\d{2}(?:0[1-9]|10|11|12)(?:0[1-9]|[12]\d|30|31)\d{3}[\dX]$/i
   return reg.test(content)
 }
